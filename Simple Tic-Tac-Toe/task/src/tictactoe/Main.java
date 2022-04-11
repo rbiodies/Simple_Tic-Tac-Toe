@@ -3,7 +3,7 @@ package tictactoe;
 import java.util.Scanner;
 
 public class Main {
-    static char[][] array = new char[3][3];
+    final static char[][] array = new char[3][3];
 
     public static void main(String[] args) {
         initArray();
