@@ -6,21 +6,21 @@ public class Main {
     static char[][] array = new char[3][3];
 
     public static void main(String[] args) {
-        initArray(array);
-        printGrid(array);
+        initArray();
+        printGrid();
         while (true) {
-            enterCoordinates(array, 'X');
-            printGrid(array);
-            if (checkGrid(array) == 1)
+            enterCoordinates('X');
+            printGrid();
+            if (checkGrid() == 1)
                 break;
-            enterCoordinates(array, 'O');
-            printGrid(array);
-            if (checkGrid(array) == 1)
+            enterCoordinates('O');
+            printGrid();
+            if (checkGrid() == 1)
                 break;
         }
     }
 
-    static void initArray(char[][] array) {
+    static void initArray() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 array[i][j] = ' ';
@@ -28,7 +28,7 @@ public class Main {
         }
     }
 
-    static void printGrid(char[][] array) {
+    static void printGrid() {
         System.out.println("---------");
         for (int i = 0; i < 3; i++) {
             System.out.print("| ");
@@ -40,7 +40,7 @@ public class Main {
         System.out.println("---------");
     }
 
-    static void enterCoordinates(char[][] array, char ch) {
+    static void enterCoordinates(char ch) {
         Scanner     scanner = new Scanner(System.in);
         while (true) {
             System.out.print("Enter the coordinates: ");
@@ -71,8 +71,8 @@ public class Main {
         }
     }
 
-    static int checkGrid(char[][] array) {
-        if (checkHorizonAndVertical(array) == 1) {
+    static int checkGrid() {
+        if (checkHorizonAndVertical() == 1) {
             return 1;
         } else if (array[0][0] != ' ' && array[0][0] == array[1][1] && array[1][1] == array[2][2]) {
             System.out.println(array[0][0] + " wins");
@@ -81,11 +81,11 @@ public class Main {
             System.out.println(array[0][2] + " wins");
             return 1;
         } else {
-            return countCharacters(array);
+            return countCharacters();
         }
     }
 
-    static int  checkHorizonAndVertical(char[][] array) {
+    static int  checkHorizonAndVertical() {
         for (int i = 0; i < 3; i++) {
             if (array[i][0] != ' ' && array[i][0] == array[i][1] && array[i][1] == array[i][2]) {
                 System.out.println(array[i][0] + " wins");
@@ -99,7 +99,7 @@ public class Main {
         return 0;
     }
 
-    static int countCharacters(char[][] array) {
+    static int countCharacters() {
         int     x = 0;
         int     o = 0;
         int     space = 0;
